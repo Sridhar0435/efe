@@ -1,0 +1,75 @@
+.signinform,
+.signupform {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 142px;
+  text-align: center;
+}
+.signupform .rts {
+  margin-top: 20px;
+}
+.signupform {
+  margin-top: 100px;
+}
+.signinform button,
+.signupform button {
+  background-color: #343a40;
+  border-color: #343a40;
+  line-height: 1.3em;
+  font-size: 1.3em;
+  border-radius: 2px;
+  color: #fff;
+  padding: 8px 10px !important;
+}
+.h3-login {
+  text-align: center;
+  margin-bottom: 22px;
+}
+/*  {input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select */
+.sign {
+  border: 1px solid #000;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0 0 1em;
+  background-color: transparent;
+  outline: none;
+  border-radius: 2px;
+}
+input,
+select,
+textarea {
+  padding: 8px 10px !important;
+  line-height: 1.42 !important;
+}
+.form-control:focus {
+  border-color: #495057 !important;
+  box-shadow: 0 0 0 0.2rem transparent !important;
+}
+/* .btn .btn-block {
+  margin-bottom: 10px !important;
+} */
+.rts {
+  color: #000;
+  text-decoration: underline;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .signinform,
+  .signupform {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 0 16px;
+  }
+}
