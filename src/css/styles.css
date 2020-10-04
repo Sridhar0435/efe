@@ -8,6 +8,9 @@
 .nav :hover {
   border-radius: 0px;
 }
+#home-content {
+  margin-bottom: 0;
+}
 
 .product-img {
   min-height: 100px;
@@ -16,9 +19,22 @@
 .jumbotron h2 {
   margin-top: -20px;
 }
+.searchicon {
+  border: 0;
+  cursor: pointer;
+}
+.searchicon:focus {
+  outline: 5px auto silver !important;
+}
+
 @media only screen and (max-width: 600px) {
   .jumbotron h2 {
     margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .jumbotron {
+    width: 100%;
   }
 }
 
@@ -70,5 +86,112 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* shop css */
+.shopMain {
+  background: #f1f3f6;
+  padding: 35px;
+}
+.shopMain .colmd3 {
+  padding: 17px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.shopMain .colmd9 {
+  padding: 17px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.colmd3 h5 {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 7px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.colmd3 .form-check-label {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8a7d7d;
+}
+.homeMain {
+  background: #f1f3f6;
+  padding: 35px;
+}
+.homeMain .new_best {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.loadMoreButtonShop {
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+/* Product.js */
+.singleProductMain {
+  background: #f1f3f6;
+}
+.singleRow {
+  padding: 25px 104px;
+}
+.singleRow .ft {
+  border-right: 0;
+  padding: 0;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.singleRow .snd {
+  padding: 0;
+  border-left: 0;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.singleproleft {
+  padding: 95px;
+  background: #fff;
+}
+.singleproright {
+  padding: 24px;
+  height: 100%;
+  background: #edf3ec;
+}
+.productricebrand {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.productprice {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.productdesc {
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+.box {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.box_div {
+  width: 70%;
+  text-align: center;
+}
+.relatedname {
+  text-transform: capitalize;
+}
+.relatedprice {
+  text-transform: capitalize;
+}
+@media screen and (max-width: 768px) {
+  .singleproleft {
+    padding: 0;
+  }
+  .singleRow {
+    padding: 0;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { UserContext, ProductContext } from "./UserContext";
-import Menu from "./core/Menu";
+import NavbarMenu from "./core/NavbarMenu";
 import Signup from "../components/user/Signup";
 import Signin from "../components/user/Signin";
 import Home from "../components/core/Home";
@@ -18,6 +18,7 @@ import Orders from "./admin/Orders";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import Footer from "./core/Footer";
 
 import "../css/styles.css";
 
@@ -56,7 +57,7 @@ const Routes = () => {
     <Router>
       <UserContext.Provider value={{ cartValue, setCartValue }}>
         <ProductContext.Provider value={{ pro, setPro }}>
-          <Menu />
+          <NavbarMenu />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/shop" exact component={Shop} />
@@ -87,6 +88,7 @@ const Routes = () => {
               component={UpdateProduct}
             />
           </Switch>
+          <Footer />
         </ProductContext.Provider>
       </UserContext.Provider>
     </Router>

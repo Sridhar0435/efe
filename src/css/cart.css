@@ -1,5 +1,21 @@
-.cart-page {
-  margin: 8px auto;
+.cartMain {
+  background: #f1f3f6;
+  padding: 35px;
+}
+.colmd8cart {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.colmd8cart table tr {
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.colmd4cart {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
 }
 .cart-page table {
   width: 100%;
@@ -42,6 +58,9 @@
 }
 .yourcursummary {
   white-space: nowrap;
+  white-space: nowrap;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .fa-trash-alt {
   color: indianred;
@@ -62,4 +81,5 @@
   color: #ffffff;
   border-radius: 3px;
   margin: 12px 0px;
+  text-transform: capitalize;
 }

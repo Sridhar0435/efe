@@ -12,6 +12,7 @@ const Card = ({
   showAddToCartButton = true,
   cartUpdate = false,
   showRemoveProductButton = false,
+  singleProductFrom = false,
   setRun = (f) => f, // default value of function
   run = undefined, // default value of undefined
 }) => {
@@ -97,10 +98,6 @@ const Card = ({
       <tr>
         <td>
           <div className="cart-info-out">
-            {/* <img
-                      src="https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
-                      alt=""
-                    /> */}
             <ShowImage item={product} url="product" className="cartcheck" />
             <div className="cart-box">
               <p>
@@ -108,15 +105,6 @@ const Card = ({
               </p>
               <small>Price: ₹{product.price}</small>
               <br />
-              {/* <button
-                onClick={() => {
-                  removeItem(product._id, (cart) => {
-                    setCartValue(cart);
-                  });
-                  // setRun(!run); // run useEffect in parent Cart
-                }}
-                className="btn btn-default"
-              ></button> */}
               {showRemoveButton(showRemoveProductButton)}
             </div>
           </div>
@@ -135,11 +123,34 @@ const Card = ({
     );
   };
 
+  const showSingleProduct = (product) => {
+    return (
+      <>
+        <div className="col-md-6 col-sm-12 ft">
+          <div className="singleproleft">
+            <ShowImage item={product} url="product" className="cartcheck" />
+          </div>
+        </div>
+        <div className="col-md-6 col-sm-12 snd">
+          <div className="singleproright">
+            <h6>Category: {product.category && product.category.name}</h6>
+            <h2 className="mb-4 productricebrand">{product.name}</h2>
+            <h2 className="mb-5 productprice">₹{product.price}</h2>
+            <p className="mb-5 productdesc">{product.description}</p>
+            <button className="btn  addtocart" onClick={addToCart}>
+              Add to Bag
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
-      {cartUpdate ? (
-        cartFromCardFalse(product)
-      ) : (
+      {cartUpdate && cartFromCardFalse(product)}
+      {singleProductFrom && showSingleProduct(product)}
+      {!cartUpdate && !singleProductFrom && (
         <div className="card cart">
           <div className="card-body card-center-cu">
             {shouldRedirect(redirect)}
@@ -147,35 +158,33 @@ const Card = ({
             <div className="productname mt-2">{product.name}</div>
             {/* <p className="lead mt-2">{product.description.substring(0, 50)}</p> */}
             <p className="homeprice">₹ {product.price}</p>
-            {/* <p className="black-9">
-          Category: {product.category && product.category.name}
-        </p> */}
-            {/* <p className="black-8">
-          Added on {moment(product.createdAt).fromNow()}
-        </p> */}
+
             {showStock(product.quantity)}
             <br />
-            <Link to={`/product/${product._id}`}>
-              {showViewProductButton ? (
-                <button className="btn btn-outline-primary mt-2 mb-2 mr-1">
-                  View Product
+            <div className="flexbestseller">
+              <Link to={`/product/${product._id}`}>
+                {showViewProductButton ? (
+                  <button className="btn btn-outline-primary mt-2 mb-2 mr-1 addtocart">
+                    View Product
+                  </button>
+                ) : (
+                  ""
+                )}
+              </Link>
+
+              {showAddToCartButton && product.quantity > 0 ? (
+                <button
+                  onClick={addToCart}
+                  className="btn mt-2 mb-2 ml-1 addtocart"
+                >
+                  Add to Bag
                 </button>
               ) : (
-                ""
+                <button className="btn mt-2 mb-2 ml-1 cursornotallowed">
+                  Add to Bag
+                </button>
               )}
-            </Link>
-
-            {showAddToCartButton ? (
-              <button
-                onClick={addToCart}
-                className="btn  mt-2 mb-2 ml-1 addtocart"
-              >
-                Add to Bag
-              </button>
-            ) : (
-              ""
-            )}
-
+            </div>
             {showCartUpdateOptions(cartUpdate)}
           </div>
         </div>

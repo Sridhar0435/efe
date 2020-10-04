@@ -38,26 +38,26 @@ const Home = () => {
     <Layout
       title="Home Page"
       description="E commerece app"
-      className="container-fluid"
+      className="container-fluid homeMain"
     >
       <Search />
       <h2 className="mb-4 newarrival">
         <span className="newbestbottomline">New Arrivals</span>
       </h2>
-      <div className="row">
+      <div className="row new_best">
         {productsByArrival.map((product, i) => (
-          <div key={i} className="col-md-3 col-sm-12 mb-3">
+          <div key={i} className="col-md-4 col-sm-12 mb-3">
             <Card product={product} />
           </div>
         ))}
       </div>
 
-      <h2 className="mb-4 newarrival">
+      <h2 className="mb-4 mt-4 newarrival">
         <span className="newbestbottomline">Best Sellers</span>
       </h2>
-      <div className="row">
+      <div className="row new_best">
         {productsBySell.map((product, i) => (
-          <div key={i} className="col-md-3 col-sm-12 mb-3">
+          <div key={i} className="col-md-4 col-sm-12 mb-3">
             <Card key={i} product={product} />
           </div>
         ))}

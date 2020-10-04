@@ -19,12 +19,8 @@ const Layout = ({
           </a>
         </div>
         <div className="copy-wrap">
-          <h1> We Deliver YOur The Rice Bag At Your Door.</h1>
-          <p>
-            Powered by an optimal blend of clean, non-irritating ingredients,
-            this breakthrough clarifying collection is formulated to treat
-            problem skin and maintain a clear, calm complexion every day.
-          </p>
+          <h1> We Deliver Your The Rice Bags At Your Door.</h1>
+          <p></p>
           <p>
             <Link
               className="button"
@@ -34,7 +30,7 @@ const Layout = ({
                   "linear-gradient(to right, rgb(115, 210, 230) 0%, rgb(247, 235, 97) 0%)",
               }}
             >
-              SHOP CLEAR GENIUS
+              SHOP WITH TRUST
             </Link>
           </p>
         </div>

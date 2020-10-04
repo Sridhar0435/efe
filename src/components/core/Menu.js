@@ -3,9 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 import "../../css/menu.css";
 import "../../css/navbar.css";
-// import Search from "./Search";
-// import { itemTotal, getCart } from "./cartHelpers";
 import { UserContext } from "../UserContext";
+import NavbarMain from "./NavbarMain";
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
@@ -23,241 +22,266 @@ const Menu = ({ history }) => {
     console.log(menu);
   };
   const { cartValue, setCartValue } = useContext(UserContext);
-
+  const [time, setTime] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("This will run after 1 second!");
+      setTime(true);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <div className="wrapper">
-      <nav id="navbar" className="">
-        <div className="nav-wrapper">
-          {/* <!-- Navbar Logo --> */}
-          <span className="cartIconMobile">
-            <Link
-              className="nav-link"
-              style={isActive(history, "/cart")}
-              to="/cart"
-            >
-              <i className="fas fa-shopping-cart"></i>{" "}
-              <sup className="sup">
-                <small className="cart-badge badgeNum">{cartValue}</small>
-              </sup>
-            </Link>
-          </span>
-          <div className="logo">
-            {/* <!-- Logo Placeholder for Inlustration --> */}
-            <Link to="/" className="logoRtd">
-              <i className="fas fa-chess-knight"></i> RiceToDoors
-              {/* <i
-                className="fas fa-chess-knight"
-                onClick={() => setValue("RiceToDoors")}
-              ></i>{" "}
-              {value} */}
-            </Link>
-          </div>
-
-          {/* <!-- Navbar Links --> */}
-          <ul id="menu">
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive(history, "/")} to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                style={isActive(history, "/shop")}
-                to="/shop"
-              >
-                Shop
-              </Link>
-            </li>
-
-            {isAuthenticated() && isAuthenticated().user.role === 0 && (
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  style={isActive(history, "/user/dashboard")}
-                  to="/user/dashboard"
-                >
-                  Dashboard
-                </Link>
-              </li>
-            )}
-
-            {isAuthenticated() && isAuthenticated().user.role === 1 && (
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  style={isActive(history, "/admin/dashboard")}
-                  to="/admin/dashboard"
-                >
-                  Dashboard
-                </Link>
-              </li>
-            )}
-
-            {!isAuthenticated() && (
-              <>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    style={isActive(history, "/signin")}
-                    to="/signin"
-                  >
-                    Log in
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    style={isActive(history, "/signup")}
-                    to="/signup"
-                  >
-                    Create account
-                  </Link>
-                </li>
-              </>
-            )}
-
-            {isAuthenticated() && (
-              <li className="nav-item">
-                <span
-                  className="nav-link span"
-                  style={{ cursor: "pointer", color: "#ffffff" }}
-                  onClick={() =>
-                    signout(() => {
-                      history.push("/");
-                    })
-                  }
-                >
-                  Signout
-                </span>
-              </li>
-            )}
-            {isAuthenticated() && (
-              <li className="nav-item">
-                <span style={{ color: "#ffffff" }} className="mr-1 hellouser">
-                  Hello, {isAuthenticated().user.name}
-                </span>
-              </li>
-            )}
-            <li className="nav-item">
+    <>
+      <NavbarMain />
+      <div className="wrapper">
+        <nav id="navbar" className="">
+          <div className="nav-wrapper">
+            {/* <!-- Navbar Logo --> */}
+            {/* <span className="cartIconMobile">
               <Link
                 className="nav-link"
                 style={isActive(history, "/cart")}
                 to="/cart"
               >
-                <i className="fas fa-shopping-cart"></i>{" "}
+                <i className="fas fa-shopping-bag"></i>{" "}
                 <sup className="sup">
                   <small className="cart-badge badgeNum">{cartValue}</small>
                 </sup>
               </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* <!-- Menu Icon --> */}
-      <div className="menuIcon" onClick={showMenu}>
-        <span className="icon icon-bars"></span>
-        <span className="icon icon-bars overlay"></span>
-      </div>
-      {menu && (
-        <div className="overlay-menu">
-          <ul id="menu">
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive(history, "/")} to="/">
-                Home
+            </span> */}
+            <div className="logo">
+              {/* <!-- Logo Placeholder for Inlustration --> */}
+              <Link to="/" className="logoRtd">
+                <i className="fas fa-chess-knight"></i> RiceToDoors
+                {/* <i
+                className="fas fa-chess-knight"
+                onClick={() => setValue("RiceToDoors")}
+              ></i>{" "}
+              {value} */}
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                style={isActive(history, "/shop")}
-                to="/shop"
-              >
-                Shop
-              </Link>
-            </li>
+            </div>
 
-            {isAuthenticated() && isAuthenticated().user.role === 0 && (
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  style={isActive(history, "/user/dashboard")}
-                  to="/user/dashboard"
-                >
-                  Dashboard
-                </Link>
-              </li>
-            )}
-
-            {isAuthenticated() && isAuthenticated().user.role === 1 && (
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  style={isActive(history, "/admin/dashboard")}
-                  to="/admin/dashboard"
-                >
-                  Dashboard
-                </Link>
-              </li>
-            )}
-
-            {!isAuthenticated() && (
-              <>
+            {/* <!-- Navbar Links --> */}
+            {time ? (
+              <ul id="menu">
                 <li className="nav-item">
                   <Link
                     className="nav-link"
-                    style={isActive(history, "/signin")}
-                    to="/signin"
+                    style={isActive(history, "/")}
+                    to="/"
                   >
-                    Log in
+                    Home
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
                     className="nav-link"
-                    style={isActive(history, "/signup")}
-                    to="/signup"
+                    style={isActive(history, "/shop")}
+                    to="/shop"
                   >
-                    Create account
+                    Shop
                   </Link>
                 </li>
-              </>
-            )}
 
-            {isAuthenticated() && (
-              <li className="nav-item">
-                <span
-                  className="nav-link"
-                  style={{ cursor: "pointer", color: "#ffffff" }}
-                  onClick={() =>
-                    signout(() => {
-                      history.push("/");
-                    })
-                  }
-                >
-                  Signout
-                </span>
-              </li>
+                {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      style={isActive(history, "/user/dashboard")}
+                      to="/user/dashboard"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                )}
+
+                {isAuthenticated() && isAuthenticated().user.role === 1 && (
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      style={isActive(history, "/admin/dashboard")}
+                      to="/admin/dashboard"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                )}
+
+                {!isAuthenticated() && (
+                  <>
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link"
+                        style={isActive(history, "/signin")}
+                        to="/signin"
+                      >
+                        Log in
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link"
+                        style={isActive(history, "/signup")}
+                        to="/signup"
+                      >
+                        Create account
+                      </Link>
+                    </li>
+                  </>
+                )}
+
+                {isAuthenticated() && (
+                  <li className="nav-item">
+                    <span
+                      className="nav-link span"
+                      style={{ cursor: "pointer", color: "#ffffff" }}
+                      onClick={() =>
+                        signout(() => {
+                          history.push("/");
+                        })
+                      }
+                    >
+                      Signout
+                    </span>
+                  </li>
+                )}
+                {isAuthenticated() && (
+                  <li className="nav-item">
+                    <span
+                      style={{ color: "#ffffff" }}
+                      className="nav-link span mr-1 hellouser"
+                    >
+                      Hello, {isAuthenticated().user.name}
+                    </span>
+                  </li>
+                )}
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    style={isActive(history, "/cart")}
+                    to="/cart"
+                  >
+                    <i className="fas fa-shopping-bag"></i>{" "}
+                    <sup className="sup">
+                      <small className="cart-badge badgeNum">{cartValue}</small>
+                    </sup>
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              ""
             )}
-            {isAuthenticated() && (
-              <li className="nav-item">
-                <span style={{ color: "#ffffff" }} className="mr-1">
-                  Hello, {isAuthenticated().user.name}
-                </span>
-              </li>
-            )}
-          </ul>
+          </div>
+        </nav>
+
+        {/* <!-- Menu Icon --> */}
+        <div className="menuIcon" onClick={showMenu}>
+          <span className="icon icon-bars"></span>
+          <span className="icon icon-bars overlay"></span>
         </div>
-      )}
+        {menu && (
+          <div className="overlay-menu">
+            <ul id="menu">
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  style={isActive(history, "/")}
+                  to="/"
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  style={isActive(history, "/shop")}
+                  to="/shop"
+                >
+                  Shop
+                </Link>
+              </li>
 
-      {/*  */}
-      <ul className="nav nav-tabs bg-color-nav">
-        {/* <li className="nav-item">
+              {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    style={isActive(history, "/user/dashboard")}
+                    to="/user/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
+
+              {isAuthenticated() && isAuthenticated().user.role === 1 && (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    style={isActive(history, "/admin/dashboard")}
+                    to="/admin/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
+
+              {!isAuthenticated() && (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      style={isActive(history, "/signin")}
+                      to="/signin"
+                    >
+                      Log in
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      style={isActive(history, "/signup")}
+                      to="/signup"
+                    >
+                      Create account
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {isAuthenticated() && (
+                <li className="nav-item">
+                  <span
+                    className="nav-link"
+                    style={{ cursor: "pointer", color: "#ffffff" }}
+                    onClick={() =>
+                      signout(() => {
+                        history.push("/");
+                      })
+                    }
+                  >
+                    Signout
+                  </span>
+                </li>
+              )}
+              {isAuthenticated() && (
+                <li className="nav-item">
+                  <span style={{ color: "#ffffff" }} className="mr-1">
+                    Hello, {isAuthenticated().user.name}
+                  </span>
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
+
+        {/*  */}
+        <ul className="nav nav-tabs bg-color-nav">
+          {/* <li className="nav-item">
         <Search />
       </li> */}
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </>
   );
 };
 

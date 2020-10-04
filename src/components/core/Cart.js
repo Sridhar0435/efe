@@ -19,9 +19,9 @@ const Cart = () => {
 
   const showItems = (items) => {
     return (
-      <div>
-        <h5>Your cart has {`pro ${pro.length}`} items</h5>
-        <hr />
+      <>
+        <h5>Your cart has {`${pro.length}`} items</h5>
+
         <table className="table">
           <thead>
             <tr>
@@ -44,7 +44,7 @@ const Cart = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </>
     );
   };
 
@@ -55,19 +55,24 @@ const Cart = () => {
   );
 
   return (
-    <div className="container">
-      <br />
-      <div className="row">
-        <div className="col-md-8 cart-page">
-          {pro.length > 0 ? showItems(pro) : noItemsMessage()}
-        </div>
-        <div className="col-md-4">
-          <h5 className="mb-4 yourcursummary">Your current summery</h5>
-          <hr />
-          <Checkout products={pro} />
+    <>
+      <div className="container-fluid cartMain">
+        <div className="row">
+          <div className="col-md-8 cart-page">
+            <div className="colmd8cart">
+              {pro.length > 0 ? showItems(pro) : noItemsMessage()}
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="colmd4cart">
+              <h5 className="mb-4 yourcursummary">Your current summery</h5>
+
+              <Checkout products={pro} />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

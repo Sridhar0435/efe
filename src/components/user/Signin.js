@@ -6,8 +6,8 @@ import "../../css/signin.css";
 
 const SignIn = () => {
   const [values, setValues] = useState({
-    email: "siri@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     redirectToReferrer: false,
@@ -16,11 +16,19 @@ const SignIn = () => {
   const { email, password, error, loading, redirectToReferrer } = values;
   const { user } = isAuthenticated();
   const handleChange = (name) => (event) => {
-    setValues({
-      ...values,
-      error: false,
-      [name]: event.target.value,
-    });
+    if (name == "email") {
+      setValues({
+        ...values,
+        error: false,
+        [name]: event.target.value.toLocaleLowerCase(),
+      });
+    } else {
+      setValues({
+        ...values,
+        error: false,
+        [name]: event.target.value,
+      });
+    }
   };
 
   const onsubmit = (event) => {
@@ -91,8 +99,8 @@ const SignIn = () => {
   const showError = () => {
     return (
       <div
-        className="alert alert-danger"
-        style={{ display: error ? "" : "none" }}
+        className="alert alert-danger signindangeralert"
+        style={{ display: error ? "" : "none", textAlign: "center" }}
       >
         {error}
       </div>
@@ -100,7 +108,7 @@ const SignIn = () => {
   };
   const showLoading = () =>
     loading && (
-      <div className="alert alert-info">
+      <div className="alert alert-info signindangeralert">
         <h2>Loading...</h2>
       </div>
     );
@@ -124,12 +132,12 @@ const SignIn = () => {
   };
 
   return (
-    <Fragment>
+    <div className="signinMain">
       {showError()}
       {showLoading()}
       {signInForm()}
       {redirectUser()}
-    </Fragment>
+    </div>
   );
 };
 

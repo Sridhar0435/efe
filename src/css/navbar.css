@@ -21,6 +21,9 @@
 /*======================================================
                             Navbar
     ======================================================*/
+.wrapper {
+  display: none;
+}
 #navbar {
   background: #343a40;
   /* color: rgb(13, 26, 38); */
@@ -28,7 +31,7 @@
   /* position: fixed; */
   top: 0;
   height: 10vh;
-  line-height: 60px;
+  line-height: 45px;
   width: 100%;
   z-index: 10;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.55);
@@ -36,10 +39,21 @@
   /* display: none; */
 }
 
+#navbar ul {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+  margin: 0;
+  /* width: 70%; */
+  /* margin-right: 2rem; */
+}
 .nav-wrapper {
   margin: auto;
   text-align: center;
-  width: 70%;
+  width: 100%;
 }
 @media (max-width: 768px) {
   .nav-wrapper {
@@ -71,29 +85,29 @@
     /*       margin-left: 5px; */
   }
 }
-
+/* 
 #navbar ul {
   display: inline-block;
   float: right;
   list-style: none;
-  /* margin-right: 14px; */
   margin-top: -2px;
   text-align: right;
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
-}
-@media (max-width: 640px) {
+} */
+
+@media (max-width: 768px) {
   /* #navbar {
-    border-bottom: 0.1px solid #ffffff;
-  } */
+        border-bottom: 0.1px solid #ffffff;
+      } */
   #navbar ul {
     display: none;
   }
 }
 @media (orientation: landscape) {
-  #navbar ul {
+  /* #navbar ul {
     display: inline-block;
-  }
+  } */
 }
 
 #navbar li {
@@ -107,8 +121,8 @@
   font-size: 0.7em;
   height: 50px;
   letter-spacing: 1px;
-  margin: 0 20px;
-  padding: 0 4px;
+  /* margin: 0 20px;
+  padding: 0 4px; */
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -158,9 +172,9 @@
 }
 
 /*======================================================
-                      Mobile Menu Menu Icon
-    ======================================================*/
-@media (max-width: 640px) {
+                          Mobile Menu Menu Icon
+        ======================================================*/
+@media (max-width: 768px) {
   .menuIcon {
     cursor: pointer;
     display: block;
@@ -193,7 +207,7 @@
     height: 2px;
     width: 20px;
     /*     -webkit-transition: top 0.2s ease 0.3s;
-      transition: top 0.2s ease 0.3s; */
+          transition: top 0.2s ease 0.3s; */
     -webkit-transition: 0.3s width 0.4s;
     transition: 0.3s width 0.4s;
   }
@@ -208,7 +222,7 @@
     height: 2px;
     width: 20px;
     /*     -webkit-transition: top 0.2s ease 0.3s;
-      transition: top 0.2s ease 0.3s; */
+          transition: top 0.2s ease 0.3s; */
     -webkit-transition: 0.3s width 0.4s;
     transition: 0.3s width 0.4s;
   }
@@ -334,24 +348,24 @@
 }
 
 /*======================================================
-                     Responsive Mobile Menu 
-    ======================================================*/
+                         Responsive Mobile Menu 
+        ======================================================*/
 /* .overlay-menu {
-  background: lightblue;
-  color: rgb(13, 26, 38);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding-right: 15px;
-  transform: translateX(-100%);
-  width: 100vw;
-  height: 100vh;
-  -webkit-transition: transform 0.2s ease-out;
-  transition: transform 0.2s ease-out;
-} */
+      background: lightblue;
+      color: rgb(13, 26, 38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-right: 15px;
+      transform: translateX(-100%);
+      width: 100vw;
+      height: 100vh;
+      -webkit-transition: transform 0.2s ease-out;
+      transition: transform 0.2s ease-out;
+    } */
 .overlay-menu {
   /* background: lightblue; */
   background: #333b3e;
@@ -387,7 +401,7 @@
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
   /*   -webkit-transition: 0.2s opacity 0.2s ease-out;
-    transition: 0.2s opacity 0.2s ease-out; */
+        transition: 0.2s opacity 0.2s ease-out; */
 }
 
 .overlay-menu li a:hover,

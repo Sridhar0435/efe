@@ -1,15 +1,24 @@
+.signinMain,
+.signupMain {
+  height: 90vh;
+  background: #f1f3f6;
+}
 .signinform,
 .signupform {
-  width: 30%;
+  width: 35%;
   margin: 0 auto;
-  margin-top: 142px;
   text-align: center;
+  position: relative;
+  top: 20%;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+}
+.signupform {
+  top: 12%;
 }
 .signupform .rts {
   margin-top: 20px;
-}
-.signupform {
-  margin-top: 100px;
 }
 .signinform button,
 .signupform button {
@@ -36,7 +45,10 @@ input[type="url"],
 textarea,
 select */
 .sign {
-  border: 1px solid #000;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #cfd5de;
   width: 100%;
   max-width: 100%;
   display: block;
@@ -63,13 +75,30 @@ textarea {
   text-decoration: underline;
   background: transparent;
 }
+.signindangeralert {
+  text-align: center;
+  width: 35%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 49px);
+}
+.signupdangeralert {
+  text-align: center;
+  width: 35%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 7px);
+}
 
 @media (max-width: 768px) {
   .signinform,
   .signupform {
     width: 100%;
     margin: 0 auto;
-    margin-top: 60px;
     padding: 0 16px;
+    background: #f1f3f6;
+    box-shadow: 0 1px 8px 0 transparent;
   }
 }

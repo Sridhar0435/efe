@@ -1,0 +1,34 @@
+.footer_title {
+  border-bottom: 2px solid #535b63;
+  padding-bottom: 7px;
+}
+.ul_footer_1 {
+  padding-left: 0;
+}
+.ul_footer_1 li a {
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.ul_footer_2 li a {
+  text-decoration: none;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.ul_footer_2 {
+  padding-left: 0;
+}
+/* #1c2331 */
+.footer {
+  background: #343a40;
+  color: #ffffff;
+}
+.footer-copyright {
+  background: #41484e;
+}
+.page-footer .text-md-left {
+  padding: 45px;
+}
+.footerp {
+  font-size: 13px;
+}

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
+// import swal from "@sweetalert/with-react";
 import Layout from "../core/Layout";
 import { signup } from "../auth/index";
+
 // import { API } from "../../config";
 
 const SignUp = () => {
@@ -11,21 +14,38 @@ const SignUp = () => {
     password: "",
     confirmpassword: "",
     error: "",
+    loading: false,
     success: false,
   });
 
-  const { name, email, password, confirmpassword, error, success } = values;
+  const {
+    name,
+    email,
+    password,
+    confirmpassword,
+    loading,
+    error,
+    success,
+  } = values;
   const handleChange = (name) => (event) => {
-    setValues({
-      ...values,
-      error: false,
-      [name]: event.target.value,
-    });
+    if (name == "email") {
+      setValues({
+        ...values,
+        error: false,
+        [name]: event.target.value.toLocaleLowerCase(),
+      });
+    } else {
+      setValues({
+        ...values,
+        error: false,
+        [name]: event.target.value,
+      });
+    }
   };
 
   const onsubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: false });
+    setValues({ ...values, error: false, loading: true });
     if (password !== confirmpassword) {
       return setValues({
         ...values,
@@ -40,6 +60,7 @@ const SignUp = () => {
             ...values,
             error: data.errors.errors[0].msg,
             success: false,
+            loading: false,
           });
         } else {
           setValues({
@@ -120,29 +141,41 @@ const SignUp = () => {
   const showError = () => {
     return (
       <div
-        className="alert alert-danger"
-        style={{ display: error ? "" : "none" }}
+        className="alert alert-danger signupdangeralert"
+        style={{ display: error ? "" : "none", textAlign: "center" }}
       >
         {error}
       </div>
     );
   };
+  const showLoading = () =>
+    loading && (
+      <div className="alert alert-info signindangeralert">
+        <h2>Loading...</h2>
+      </div>
+    );
   const showSuccess = () => (
     <div
-      className="alert alert-info"
-      style={{ display: success ? "" : "none" }}
+      className="alert alert-info signupdangeralert"
+      style={{
+        display: success ? "" : "none",
+        position: "absolute",
+        left: "50%",
+        transform: "translate(-50%, 12%)",
+      }}
     >
       New account is created, Please <Link to="/signin">signin</Link>
     </div>
   );
 
   return (
-    <>
+    <div className="signupMain">
       {showError()}
+      {showLoading()}
       {showSuccess()}
       {signUpForm()}
       {/* {JSON.stringify(values)} */}
-    </>
+    </div>
   );
 };
 

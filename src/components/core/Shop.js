@@ -15,6 +15,7 @@ const Shop = () => {
   const [limit, setLimit] = useState(4);
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [filteredResults, setFilteredResults] = useState([]);
 
   const init = () => {
@@ -33,10 +34,12 @@ const Shop = () => {
       // console.log(data.data);
       if (data.err) {
         setError(data.err);
+        setLoading(false);
       } else {
         setFilteredResults(data.data);
         setSize(data.size);
         setSkip(0);
+        setLoading(false);
       }
     });
   };
@@ -62,9 +65,11 @@ const Shop = () => {
     return (
       size > 0 &&
       size >= limit && (
-        <button onClick={loadMore} className="btn btn-warning mb-5">
-          Load more
-        </button>
+        <div className="loadMoreButtonShop">
+          <button onClick={loadMore} className="btn btn-warning mb-5">
+            Load more
+          </button>
+        </div>
       )
     );
   };
@@ -72,6 +77,7 @@ const Shop = () => {
   useEffect(() => {
     init();
     loadFilterResults(skip, limit, myFilters.filters);
+
     console.log(filteredResults);
   }, []);
 
@@ -100,48 +106,55 @@ const Shop = () => {
     }
     return array;
   };
-
+  const showLoading = (loading) =>
+    loading && (
+      <div className="alert alert-info">
+        <h2>Loading...</h2>
+      </div>
+    );
   return (
-    <Layout
-      title="Shop Page"
-      description="Search and find rice of your choice"
-      className="container-fluid"
-    >
-      <div className="row">
-        <div className="col-md-3">
-          <h5>
-            <span className="newbestbottomline">Filter by categories</span>
-          </h5>
-          <ul>
-            <Checkbox
-              categories={categories}
-              handleFilters={(filters) => handleFilters(filters, "category")}
-            />
-          </ul>
+    <>
+      <div className="container-fluid shopMain">
+        {showLoading(loading)}
 
-          <h5>
-            <span className="newbestbottomline">Filter by price range</span>
-          </h5>
-          <div>
-            <Radiobox
-              prices={prices}
-              handleFilters={(filters) => handleFilters(filters, "price")}
-            />
-          </div>
-        </div>
-        <div className="col-md-9">
-          <h2 className="mb-4">Products</h2>
-          <div className="row">
-            {filteredResults.map((product, i) => (
-              <div key={i} className="col-md-4 col-sm-12 mb-3">
-                <Card product={product} />
+        <div className="row">
+          <div className="col-md-3">
+            <div className="colmd3">
+              <h5>Categories</h5>
+              <ul>
+                <Checkbox
+                  categories={categories}
+                  handleFilters={(filters) =>
+                    handleFilters(filters, "category")
+                  }
+                />
+              </ul>
+
+              <h5>Price range</h5>
+              <div>
+                <Radiobox
+                  prices={prices}
+                  handleFilters={(filters) => handleFilters(filters, "price")}
+                />
               </div>
-            ))}
+            </div>
           </div>
-          {loadMoreButton()}
+          <div className="col-md-9">
+            <div className="colmd9">
+              <h5 className="mb-4">Products</h5>
+              <div className="row">
+                {filteredResults.map((product, i) => (
+                  <div key={i} className="col-md-4 col-sm-12 mb-3">
+                    <Card product={product} />
+                  </div>
+                ))}
+              </div>
+              {loadMoreButton()}
+            </div>
+          </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

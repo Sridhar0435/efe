@@ -64,7 +64,7 @@ const Checkout = ({ products }) => {
           onClick={redirectToCartFromSignIn}
           className="btn btn-default signincheckout"
         >
-          Sign in to checkout
+          Log in to checkout
         </button>
       </Link>
     );
@@ -172,7 +172,7 @@ const Checkout = ({ products }) => {
       className="alert alert-info"
       style={{ display: success ? "" : "none" }}
     >
-      Thanks! Your payment was successfull of!
+      Thanks! for visiting us and making your first purchase
     </div>
   );
 

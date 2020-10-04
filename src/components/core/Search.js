@@ -89,7 +89,9 @@ const Search = () => {
           />
         </div>
         <div className="btn input-group-append" style={{ border: "none" }}>
-          <button className="input-group-text">Search</button>
+          <button className="input-group-text searchicon">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </span>
     </form>
